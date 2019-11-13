@@ -1,0 +1,9 @@
+.card-user {
+    display: flex;
+    padding: 10px;
+    background: bisque;
+}
+
+.list-cards{
+    display: inline-grid;
+}
