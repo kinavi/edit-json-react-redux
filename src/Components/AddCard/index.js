@@ -22,8 +22,6 @@ class PatternCard extends Component{
     getCard(){
         const {nameField, emailField, configField,timerField,flagsField} = this
         const {freeId} = this.props
-        //console.dir(freeId())
-        //{id, name, email, config_bool, timer_integer, flags}
         return {
             id:freeId(),
             name:nameField.value,
@@ -42,9 +40,6 @@ class PatternCard extends Component{
         return(
             <div>
                 <div className='card-user'>
-                    {/* <div className='item'>
-                        <input ref={getIdref} type="text" size='5'></input>
-                    </div> */}
                     <div className='item'>
                         <div>Name:</div>
                         <input ref={getNameref} type="text" size='5'></input>
@@ -65,14 +60,6 @@ class PatternCard extends Component{
                         <div>Flags:</div>
                         <input ref={getflagsref} type="text" size='5'></input>
                     </div>
-                    {/* <div className='item'>
-                        <div>{dateactivate}</div>
-                    </div>
-                    <div className='item'>
-                        <div>{dateupdate}</div>
-                    </div> */}
-                    {/* <button className='item' onClick={isEdit?onSave:onEdit}>{isEdit?'Save':'Edit'}</button> 
-                    <button className='item' onClick={isEdit?onСancel:onRemove}>{isEdit?'Cancel':'Delete'}</button> */}
                     <button className='item' onClick={()=>onAdd(getCard())} >Add</button>
                     <button className='item' onClick={onCancel}>Cancel</button>
                 </div>
@@ -104,8 +91,6 @@ class AddCard extends Component{
 
     AddCard(value){
         const {onAddCard} = this.props
-        //console.log('Value:')
-        //console.log(value)
         onAddCard(value)
     }
 

@@ -33,7 +33,6 @@ class App extends Component {
     }
 
     setCards(card){
-        //console.dir(card)
         const {addCard} = this
         const {cards} = this.state
         if(Array.isArray(card)) //тут косяк. Надо доплнять массив, а не подменять) 
@@ -48,13 +47,17 @@ class App extends Component {
     }
 
     setLastId(){
-        const {cards} = this.state
-        let lastId = cards.slice(-1)[0].id
-        console.log(`${lastId} - Новый последний ID`)
-        console.log(`${this.state.lastId} - последний ID`)
-        console.log(`${{lastId}} - это мы отправляем`)
-        this.setState({lastId})
-        console.dir(this.state.lastId)
+        const {cards, lastId} = this.state
+        if(cards.length>0)
+        {
+            let newlastId = cards.slice(-1)[0].id
+            console.log(`${newlastId} - Новый последний ID`)
+            console.log(`${this.state.lastId} - последний ID`)
+            console.log(`${{lastId}} - это мы отправляем`)
+            this.setState({lastId:newlastId})
+            console.dir(this.state.lastId)
+        }
+        
     }
 
     // componentWillUpdate(nextProps, nextState){
@@ -86,34 +89,6 @@ class App extends Component {
         const {freeId} = this.state
         return freeId
     }
-    // outputCard(){
-    //     const {cards} = this.state
-    // }
-    //JSON.stringify
-
-    // componentDidMount(){
-    //     console.log(this.refs._ref.value);
-    // }
-
-
-    // shouldComponentUpdate(nextState){
-    //     const { cards } = this.nextState
-    //     return cards !== nextState.cards
-    // }
-
-    // componentWillReceiveProps(nextProps){
-
-    // }
-
-    //setLastId
-
-    // GeneratorId(lastId) {
-    //     const {cards} = this.state
-
-    //     if(IsConcatId(++lastId, cards))
-    //         GeneratorId(lastId)
-    //     else return lastId;
-    // }
 
     addCard(value, arr)
     {
@@ -123,19 +98,14 @@ class App extends Component {
 
     changeCard(value)
     {
-        //console.log(2)
-        //console.dir(value)
         const {cards} = this.state
 
         for (let card of cards)
         {
-            //console.log(value)
             if(card.id===value.id)
             {
-                //console.dir(card)
                 for (let key in card){
                     card[key]=value[key]
-                    //console.log(`card: ${card[key]} = value: ${value[key]}`)
                 }
                 this.setState({cards})
             }
@@ -168,33 +138,13 @@ class App extends Component {
 }
 
 function GeneratorId(lastId, cards) {
-    //console.dir(cards)
     if(IsConcatId(++lastId, cards))
         GeneratorId(+lastId)
     else return +lastId;
 }
 
 function IsConcatId(obj,cards)
-{   
-    // if(typeof obj === 'object')
-    // {
-    //     for (let elem of arr)
-    //     {
-    //         if(obj.id==elem.id)
-    //             return true
-    //     }
-    //     return false
-    // }
-    // else{
-    //     for (let elem of arr)
-    //     {
-    //         if(id==elem.id)
-    //             return true
-    //     }
-    //     return false
-    // }
-
-    //console.dir(cards)
+{  
     for (let elem of cards)
     {
 
