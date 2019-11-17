@@ -30,6 +30,8 @@ import User from './User'
                 //     isEdit:action.isEdit
                 // }
             )
+        case TA.CLEAR_USERS:
+            return []
         default: 
             return state
     }

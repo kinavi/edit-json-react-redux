@@ -90,7 +90,7 @@ const InputField = ({store})=>{
         if(IsJsonString(tafield.value))
         {
             const reasul = JSON.parse(tafield.value)
-            //console.log(reasul)
+            console.log(reasul)
             if(Array.isArray(reasul))
                 reasul.map(u=>
                     store.dispatch(
@@ -123,8 +123,17 @@ const InputField = ({store})=>{
 
     return(
         <div>
-            <div>Ведите данные JSON: </div>
-            <textarea ref={ta=>tafield=ta} name="comment" cols="40" rows="3"></textarea>
+            <div>Ведите данные JSON (массив/объект): </div>
+            <textarea ref={ta=>tafield=ta} name="comment" cols="40" rows="3" placeholder='{
+                "id": 100, 
+                "name": "Inna", 
+                "email": "inna@example.org", 
+                "config_bool": 0, 
+                "timer_integer": 176, 
+                "flags": [1,0,1], 
+                "dateactivate": "2019-10-10T11:12:32.1276Z", 
+                "dateupdate": "2019-10-09 19:43:38"
+                }'/>
             <div>
                 <button onClick={onAddUser}>Add</button>
             </div>

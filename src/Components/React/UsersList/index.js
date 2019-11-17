@@ -4,19 +4,24 @@ import './style.css'
 import AddCard from '../AddUser'
 import RemoveUser from '../../Redux/Actions/RemoveUser'
 import switchEditMode from '../../Redux/Actions/SwitchEditMode'
+import clearUsers from '../../Redux/Actions/ClearUsers'
 
 const UsersList = ({store})=>{
     //const { value, isEdit } = store.getState().Users
     const {Users} = store.getState()
     //console.dir(Users);
     //const sortedColors = [...colors].sort(sortFunction(sort))
-
+    const onClearUsers= ()=>{
+        store.dispatch(
+            clearUsers()
+        )
+    }
     //{console.log(Users[0].isEdit)}
     return (
         <div>
             <div>Users:</div>
             <div className='list-cards'>
-                {(Users.length===0)?
+                {(!Users.length)?
                     <p>Нет данных</p>:
                     Users.map(user=>
                         <User key={user.id}  {...user} store={store} isEdit={user.isEdit}
@@ -38,6 +43,10 @@ const UsersList = ({store})=>{
                     )
                 }
             </div>
+            <div hidden={!Users.length}>
+                <button className='btn' onClick={onClearUsers}>Clear</button>
+            </div>
+            
         </div>
     )
     
