@@ -4,7 +4,7 @@ import editUser from '../../Redux/Actions/EditUser'
 import switchEditMode from '../../Redux/Actions/SwitchEditMode'
 
 const User = ({store, id, name, email, config_bool, timer_integer, flags, dateactivate, dateupdate, onRemove, isEdit})=>{
-   console.dir(isEdit)
+   //console.dir(isEdit)
    let nameField, emailField, configField, timerField, flagsField, dateactivateField
 
    const onEdit=()=>
@@ -18,7 +18,7 @@ const User = ({store, id, name, email, config_bool, timer_integer, flags, dateac
       )
 
    const onSave = ()=>{
-      console.log(this)
+      //console.log(this)
       store.dispatch(
          editUser(
             id,

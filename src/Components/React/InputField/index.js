@@ -84,13 +84,13 @@ const InputField = ({store})=>{
     let tafield
 
     const onAddUser=()=>{
-        console.log(tafield.value)
-        console.log(IsJsonString(tafield.value))
+        //console.log(tafield.value)
+        //console.log(IsJsonString(tafield.value))
         //(id, name, email, config, timer, flags, dateactivate)
         if(IsJsonString(tafield.value))
         {
             const reasul = JSON.parse(tafield.value)
-            console.log(reasul)
+            //console.log(reasul)
             if(Array.isArray(reasul))
                 reasul.map(u=>
                     store.dispatch(

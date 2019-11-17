@@ -4,13 +4,13 @@ import CardList from './React/UsersList'
 //import PropTypes from 'prop-types'
 import InputField from './React/InputField'
 import OutputField from './React/outputField'
-import AddUser from './React/AddUser'
+//import AddUser from './React/AddUser'
 
 const App = ({ store }) =>
     <div className="app">
         <InputField store={store}/>
         <CardList store={store}/>
-        <AddUser store={store}/>
+        {/* <AddUser store={store}/> */}
         <OutputField store={store}/>
     </div>
 export default App

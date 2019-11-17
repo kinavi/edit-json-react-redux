@@ -8,7 +8,7 @@ import switchEditMode from '../../Redux/Actions/SwitchEditMode'
 const UsersList = ({store})=>{
     //const { value, isEdit } = store.getState().Users
     const {Users} = store.getState()
-    console.dir(Users);
+    //console.dir(Users);
     //const sortedColors = [...colors].sort(sortFunction(sort))
 
     //{console.log(Users[0].isEdit)}

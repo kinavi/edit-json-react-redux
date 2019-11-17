@@ -30,7 +30,7 @@ const store = createStore(
     combineReducers({ Users }),
     initialState
 )
-console.dir(store)
+//console.dir(store)
 const render = () =>
     ReactDOM.render(
         <App store={store}/>,
