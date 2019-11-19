@@ -35,8 +35,7 @@ const User = (state = {}, action)=>{
                 return(state.id!==action.id)?
                 {
                     ...state
-                    //isEdit:!action.isEdit
-                }://state.isEdit=action.isEdit
+                }:
                 {
                     ...state,
                     isEdit:action.isEdit
@@ -47,5 +46,3 @@ const User = (state = {}, action)=>{
 }
 
 export default User
-//name, email, config, timer, flags, dateactivate
-//id name email config_bool timer_integer flags dateactivate dateupdate

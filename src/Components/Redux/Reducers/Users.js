@@ -20,15 +20,6 @@ import User from './User'
         case TA.SWITCH_EDIT_MODE:
             return state.map(u=>
                 User(u,action)
-                // u.value.id!==action.id?
-                // {
-                //     ...state,
-                //     isEdit:!action.isEdit
-                // }://state.isEdit=action.isEdit
-                // {
-                //     ...state,
-                //     isEdit:action.isEdit
-                // }
             )
         case TA.CLEAR_USERS:
             return []

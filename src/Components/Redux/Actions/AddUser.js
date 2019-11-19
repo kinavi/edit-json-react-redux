@@ -13,5 +13,3 @@ import TA from '../TypeActions'
         dateupdate:new Date().toString()
     })
 export default addUser
-
-//id name email config_bool timer_integer flags dateactivate dateupdate
