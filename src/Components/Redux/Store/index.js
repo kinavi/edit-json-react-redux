@@ -4,6 +4,7 @@ import { createStore,
 import Users  from '../Reducers/Users'
 import stateData from '../../../Data/userApi.json'
 
+// {XXX} Не работает. Разобраться!
 const storeFactory = () =>
     console.log(JSON.parse(stateData))  
     const json=stateData

@@ -2,6 +2,8 @@ import React from 'react';
 import './style.css'
 import editUser from '../../Redux/Actions/EditUser'
 import switchEditMode from '../../Redux/Actions/SwitchEditMode'
+import { connect } from 'react-redux'
+
 
 const User = ({store, id, name, email, config_bool, timer_integer, flags, dateactivate, dateupdate, onRemove, isEdit})=>{
 
@@ -85,4 +87,4 @@ User.getTimerref= (node)=>{this.timerField=node}
 User.getflagsref= (node)=>{this.flagsField=node}
 User.getDateActivateref= (node)=>{this.dateactivateField=node}
 
-export default User 
+export default User

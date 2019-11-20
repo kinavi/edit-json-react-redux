@@ -1,13 +1,48 @@
-import React from 'react';
-import CardList from './React/UsersList'
-import InputField from './React/InputField'
-import OutputField from './React/outputField'
+import React, {PropTypes, Component} from 'react';
+import Table from './React/Table/index'
+//import InputField from './React/old/InputField'
+//import OutputField from './React/old/outputField'
+import Input from './React/Input'
 
-const App = ({ store }) =>
+// class App extends Component{
+    
+//     getChildContext() {
+//         return {
+//             store: this.props.store
+//         }
+//     }
+
+//     componentWillMount() {
+//         this.unsubscribe = store.subscribe(
+//             () => this.forceUpdate()
+//         )
+//     }
+
+//     componentWillUnmount() {
+//         this.unsubscribe()
+//     }
+
+//     render(){
+
+//         return(
+//             <div className="app">
+//                 {/* <InputField/> */}
+//                 <CardList/>
+//                 {/* <OutputField/> */}
+//             </div>
+//         )
+//     }
+
+// }
+// App.childContextTypes = {
+//     store: PropTypes.object.isRequired
+// }
+
+const App = () =>
     <div className="app">
-        <InputField store={store}/>
-        <CardList store={store}/>
-        <OutputField store={store}/>
+        <Input/>
+        <Table/>
+        {/* <OutputField/> */}
     </div>
     
 export default App
