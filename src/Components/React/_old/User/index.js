@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css'
-import editUser from '../../Redux/Actions/EditUser'
-import switchEditMode from '../../Redux/Actions/SwitchEditMode'
+import editUser from '../../../Redux/Actions/EditUser'
+import switchEditMode from '../../../Redux/Actions/SwitchEditMode'
 import { connect } from 'react-redux'
 
 

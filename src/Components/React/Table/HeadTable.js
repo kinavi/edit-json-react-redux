@@ -10,11 +10,9 @@ const HeadTable = ({Titles}) =>
     
 const mapStateToProps = state =>
 ({
-    Titles: [...state.Titles]
+    Titles: [...state.mask]
 })   
 
 export default connect(
     mapStateToProps
 )(HeadTable)
-
-//export default HeadTable

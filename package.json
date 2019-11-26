@@ -32,6 +32,9 @@
     ]
   },
   "devDependencies": {
+    "babel-jest": "^24.9.0",
+    "eslint": "^6.7.1",
+    "eslint-plugin-react": "^7.16.0",
     "json-loader": "^0.5.7"
   }
 }

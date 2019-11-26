@@ -1,4 +1,4 @@
-import {TitleTypeActions} from '../../TypeActions_v2'
+import {TitleTypeActions} from '../../TypeActions'
 
 export const addTitle=(value)=>({
     Type:TitleTypeActions.ADD_TITLE,

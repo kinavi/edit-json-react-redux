@@ -1,4 +1,4 @@
-import {TypeActions} from '../TypeActions_v2'
+import {TypeActions} from '../TypeActions'
 
 export const Value=(state = {}, action)=>
 {

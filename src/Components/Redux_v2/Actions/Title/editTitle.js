@@ -1,4 +1,4 @@
-import {TitleTypeActions} from '../../TypeActions_v2'
+import {TitleTypeActions} from '../../TypeActions'
 
 export const editTitle=(index,value)=>({
     Type:TitleTypeActions.REMOVE_TITLE,

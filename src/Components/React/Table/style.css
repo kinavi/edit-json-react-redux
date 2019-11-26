@@ -51,7 +51,7 @@
 }
 
 .body-table{
-    
+    display: inline-grid;
 }
 
 .item{

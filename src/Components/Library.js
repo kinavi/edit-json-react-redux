@@ -1,5 +1,5 @@
 
-function IsJsonFormat(value) {
+export function IsJsonFormat(value) {
     try {
         JSON.parse(value);
     } catch (e) {
@@ -8,4 +8,6 @@ function IsJsonFormat(value) {
     return true;
 }
 
-export default IsJsonFormat
+
+
+// default IsJsonFormat

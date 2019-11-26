@@ -3,10 +3,10 @@ import Item from './Item'
 import { connect } from 'react-redux'
 
 const BodyTable = ({Items})=>
-    <div className='body-table'> 
+    <div className='body-table'>
         {Items.map(item=>
             <div className='item'>
-                <Item item={item}/>
+                <Item key={item.id} cells={item.cells}/>
             </div>
             )}
 
@@ -15,7 +15,7 @@ const BodyTable = ({Items})=>
 
 const mapStateToProps = state =>
 ({
-    Items: [...state.Items]
+    Items: [...state.items]
 })   
 
 export default connect(
