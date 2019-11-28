@@ -1,7 +1,10 @@
 import { TypeActions } from '../TypeActions'
 import { items } from './Items'
-import { stat } from 'fs'
+//import { stat } from 'fs'
 import { titles } from './titles'
+import { preLoader } from './preLoader'
+import { InputLog } from './InputLog'
+import { lastId } from './lastId'
 
 export const app = (state = {}, action)=>{
     switch(action.type)
@@ -41,10 +44,43 @@ export const app = (state = {}, action)=>{
             }
 
         case TypeActions.SORT_BY_MASK:
-            return items(state, action)
+            return {
+                ...state,
+                items:items(state, action)
+            }
+            
 
         case TypeActions.UPDATE_TITLES:
-            return titles(state, action)
+            return {
+                ...state,
+                titles:titles(state, action)
+            }
+
+        case TypeActions.ADD_DATA:
+            return {
+                ...state,
+                preLoader:preLoader(state.preLoader, action)
+            }
+            
+            
+        case TypeActions.INPUT_LOG:
+            return {
+                ...state,
+                InputLog:InputLog(state, action)
+            }
+            
+        case TypeActions.UPDATE_LAST_ID:
+            return{
+                ...state,
+                lastId:lastId(state.items, action)
+            }
+
+
+        case TypeActions.CLEAR_PRELOADER:
+            return{
+                ...state,
+                preLoader:[]
+            }
 
         default:
             return state

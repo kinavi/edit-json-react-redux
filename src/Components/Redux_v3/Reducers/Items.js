@@ -56,7 +56,7 @@ function sortCellsByMask(cells,mask){
 function getCell(key,cells){
     for(let cell in cells)
     {
-        if(cells[cell].key==key)
+        if(cells[cell].key===key)
             return cells[cell]
     }
     return {
@@ -66,23 +66,23 @@ function getCell(key,cells){
     }
 }
 
-function sortByMask(objs,mask){
-    let _Object = []
-    for(let key in mask)
-    {
-        _Object.push(getObj(mask[key],objs))
-    }
-    return _Object
-}
+// function sortByMask(objs,mask){
+//     let _Object = []
+//     for(let key in mask)
+//     {
+//         _Object.push(getObj(mask[key],objs))
+//     }
+//     return _Object
+// }
 
-function getObj(key,objs){
-    for(let ob in objs)
-    {
-        if(objs[ob].key==key)
-            return objs[ob]
-    }
-    return {
-        value:'',
-        key:key
-    }
-}
+// function getObj(key,objs){
+//     for(let ob in objs)
+//     {
+//         if(objs[ob].key==key)
+//             return objs[ob]
+//     }
+//     return {
+//         value:'',
+//         key:key
+//     }
+// }

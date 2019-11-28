@@ -1,72 +1,100 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {IsJsonFormat} from '../../Library' 
-//import {addItem} from '../../Redux/Redux_v3/Actions/Cell/'
-//import { addMask } from './'
+import { inputLog } from '../../Redux_v3/Actions/PreLoader/inputLog'
+import { addData } from '../../Redux_v3/Actions/PreLoader/addData'
+//import { updateLastId } from '../../Redux_v3/Actions/LastId/updateLastId'
+import { clearPreLoader } from '../../Redux_v3/Actions/PreLoader/clearPreLoader'
+import PreItem from './PreItem'
+import './style.css'
+import { addItem } from '../../Redux_v3/Actions/Items/addItem'
+import { sortCellByMask } from '../../Redux_v3/Actions/Cell/sortCellByMask'
+import {updateTitles} from '../../Redux_v3/Actions/Titles/updateTitles'
 
 const Input = (props,{store})=>
 {
     let taValue;
-    const {onReadData} = props
+
+    function clearField()
+    {
+        taValue.value=''
+    }
+
+    const {onReadData, Items, InputLog,LastId, onAddItem} = props
     return(
-        <div>
-            <textarea ref={node=>taValue=node.value} onInput={()=>onReadData(taValue)}/>
+        
+        <div className='input'>
+            <textarea ref={node=>taValue=node} onInput={()=>onReadData(LastId,taValue.value)}/>
+            <div>{(InputLog!==''&&!!InputLog)?InputLog:'Введите JSON'}</div>
+            {(!Items.length)?
+            <div></div>
+            :
+            <div>
+                <PreItem/><br/>
+                <button onClick={()=>onAddItem(Items,clearField)} >Add main table</button>
+            </div>
+            }
         </div>
+        
     )
 }
-    
+//test - [{"name":"Vova","id":110},{"name":"Vova","id":110}]
+const mapStateToProps = state =>
+({
 
-//export default Input
+    Items:state.preLoader,
+    InputLog:state.InputLog,
+    LastId:state.lastId
+})
 
-// const mapStateToProps = state =>
-// ({
-//     Titles: [...state.Titles],
-//     Items:[...state.Items]
-// })
-function getAllKeys(obj){
-    return Object.keys(obj)
-}
 
 const mapDispatchToProps = dispatch =>
 ({
-    // onReadData(value){
-    //     if(IsJsonFormat(value))
-    //     {
-    //         if(Array.isArray(value))
-    //             value.map(it=>dispatch(addMask(it)))//addItem(it.id, )
-    //         else
-    //             dispatch(addMask(value))
-    //     }
-    // }
-    // onRemove(id) {
-    //     dispatch(RemoveUser(id))
-    // },
-    // onClear(){
-    //     dispatch(ClearUsers())
-    // },
-    // onEdit(id){
-    //     dispatch(switchEditMode(true,id))
-    // },
-    // onCancel(id){
-    //     dispatch(switchEditMode(false,id))
-    // },
-    // onSave(id, name, email, config, timer, flags, dateactivate){
-    //     dispatch(
-    //         editUser(
-    //             id,
-    //             name,
-    //             email,
-    //             config,
-    //             timer,
-    //             flags,
-    //             dateactivate,
-    //             new Date().toLocaleString()
-    //         )
-    //     )
-    // }
+    onReadData(id,value){
+        dispatch(clearPreLoader())
+        if(IsJsonFormat(value))
+        {
+            const parsJSON = JSON.parse(value)
+            dispatch(clearPreLoader())
+            if(Array.isArray(parsJSON))
+            {
+                //console.dir(parsJSON)
+                parsJSON.map((it, i, ar)=>dispatch(addData(+id+1+i,it)))//addItem(it.id, )
+            }   
+            else
+            {
+                dispatch(addData(id,parsJSON))
+            }
+
+            //dispatch(updateLastId())
+            dispatch(inputLog(`JSON: ${value}`))
+        }
+        else if(value=='')
+        {
+            
+            dispatch(inputLog('Введите JSON'))
+        }   
+        else
+            dispatch(inputLog(`Ошибка ввода: ${value}`))
+    },
+
+    onAddItem(Items, clear){
+        Items.map(item=>{
+            dispatch(addItem(item.id,item.cells))
+        })
+        //dispatch(updateLastId())
+        dispatch(clearPreLoader())
+        clear()
+        dispatch(inputLog(`Введите JSON`))
+        dispatch(updateTitles())
+        dispatch(sortCellByMask())
+    }
 })
 
+
+
+
 export default connect(
-    //mapStateToProps,
+    mapStateToProps,
     mapDispatchToProps
 )(Input)

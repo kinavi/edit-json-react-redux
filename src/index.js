@@ -9,9 +9,11 @@ import { Provider } from 'react-redux'
 //import IsJsonFormat from './Components/Library' 
 
 //import {Basket} from './Components/Redux/Redux_v3/Reducers/Basket'
-import {items} from './Components/Redux_v3/Reducers/Items'
-import {mask} from './Components/Redux_v3/Reducers/titles'
-import testData from './Data/testData.json'
+//import { items } from './Components/Redux_v3/Reducers/Items'
+//import { titles } from './Components/Redux_v3/Reducers/titles'
+//import testData from './Data/testData.json'
+import { app } from './Components/Redux_v3/Reducers/app'
+
 // const initialState = {
 //     Users:stateData
 // } 
@@ -77,9 +79,9 @@ import testData from './Data/testData.json'
 // }
     
 
-function getAllKeys(obj){
-    return Object.keys(obj)
-}
+// function getAllKeys(obj){
+//     return Object.keys(obj)
+// }
 
 // Array.isArray(reasul)
 
@@ -109,50 +111,54 @@ function getAllKeys(obj){
 
 const initialState = {
     items:[
-        {
-            cells:[
-                {
-                    value:150,
-                    key:'id',
-                    isEdit:false,
-                },
-                {
-                    value:'Vova',
-                    key:'name',
-                    isEdit:false,
-                },
-                {
-                    value:'www@www.ww',
-                    key:'email',
-                    isEdit:false,
-                }
-            ],
-            id:5
-        },
-        {
-            cells:[
-                {
-                    value:15,
-                    key:'id',
-                    isEdit:false,
-                },
-                {
-                    value:'Vasa',
-                    key:'name',
-                    isEdit:false,
-                },
-                {
-                    value:'w2ww@www.ww',
-                    key:'email',
-                    isEdit:false,
-                }
-            ],
-            id:1
-        }
+        // {
+        //     cells:[
+        //         {
+        //             value:150,
+        //             key:'id',
+        //             isEdit:false,
+        //         },
+        //         {
+        //             value:'Vova',
+        //             key:'name',
+        //             isEdit:false,
+        //         },
+        //         {
+        //             value:'www@www.ww',
+        //             key:'email',
+        //             isEdit:false,
+        //         }
+        //     ],
+        //     id:1
+        // },
+        // {
+        //     cells:[
+        //         {
+        //             value:15,
+        //             key:'id',
+        //             isEdit:false,
+        //         },
+        //         {
+        //             value:'Vasa',
+        //             key:'name',
+        //             isEdit:false,
+        //         },
+        //         {
+        //             value:'w2ww@www.ww',
+        //             key:'email',
+        //             isEdit:false,
+        //         }
+        //     ],
+        //     id:2
+        // }
     ],
     titles:[
-        'email', 'id','time','name'
-    ]
+        // 'id','time','name'
+    ],
+    preLoader:[],
+    lastId:2,
+    InputLog:""
+    
     // Titles:['id','name','mail'],
     // Items:[
     //     {
@@ -164,13 +170,13 @@ const initialState = {
 }
 
 const store = createStore(
-    combineReducers({ items, mask }),
+    app,
     initialState
 )
-
+//console.log(` titles - ${store.getState().titles}`)
 ReactDOM.render(
     <Provider store={store}>
-        <App /> {console.log(store.getState())}
+        <App/> 
     </Provider>,
     document.getElementById('root')
 )

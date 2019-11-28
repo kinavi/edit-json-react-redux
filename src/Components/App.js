@@ -1,6 +1,6 @@
-import React, {PropTypes, Component} from 'react';
+import React from 'react';
 import Table from './React/Table/index'
-//import InputField from './React/old/InputField'
+//import InputField from './React/old/InputField' --- {PropTypes, Component}
 //import OutputField from './React/old/outputField'
 import Input from './React/Input'
 

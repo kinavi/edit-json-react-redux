@@ -1,6 +1,6 @@
 import {TypeActions} from '../TypeActions'
 //import {ItemsTypeActions} from '../ItemTypeActions'
-import {Cell} from './Cell'
+//import {Cell} from './Cell'
 import {Cells} from './Cells'
 
 export const Item = (state = {}, action)=>{
@@ -50,27 +50,27 @@ export const Item = (state = {}, action)=>{
     }
 }
 
-function sortCellsByMask(cells,mask){
-    let _Object = []
-    for(let key in mask)
-    {
-        _Object.push(getCell(mask[key],cells))
-    }
-    return _Object
-}
+// function sortCellsByMask(cells,mask){
+//     let _Object = []
+//     for(let key in mask)
+//     {
+//         _Object.push(getCell(mask[key],cells))
+//     }
+//     return _Object
+// }
 
-function getCell(key,cells){
-    for(let cell in cells)
-    {
-        if(cells[cell].key==key)
-            return cells[cell]
-    }
-    return {
-        value:'',
-        key:key,
-        isEdit:false
-    }
-}
+// function getCell(key,cells){
+//     for(let cell in cells)
+//     {
+//         if(cells[cell].key==key)
+//             return cells[cell]
+//     }
+//     return {
+//         value:'',
+//         key:key,
+//         isEdit:false
+//     }
+// }
 
 // function sortTitlesByMask(objs,mask){
 //     let _Object = []

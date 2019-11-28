@@ -6,20 +6,20 @@ const BodyTable = ({Items})=>
     <div className='body-table'>
         {Items.map(item=>
             <div className='item'>
-                <Item key={item.id} cells={item.cells}/>
+                <Item cells={item.cells} id={item.id}/>
             </div>
             )}
-
+        <button>Add</button>
     </div>
 
 
 const mapStateToProps = state =>
 ({
-    Items: [...state.items]
+    Items: state.items
 })   
 
 export default connect(
     mapStateToProps
 )(BodyTable)
 
-//export default BodyTable
+//export default BodyTable 
