@@ -1,17 +1,8 @@
 import { app } from './app'
-import { addCell } from '../Actions/Cell/addCell'
-import { editCell } from '../Actions/Cell/editCell'
-import { switchEditeMode } from '../Actions/Cell/switchEditeMode'
-import { removeCell } from '../Actions/Cell/removeCell'
-import { sortCellByMask } from '../Actions/Cell/sortCellByMask'
-import { removeItem } from '../Actions/Items/removeItem'
 import { addItem } from '../Actions/Items/addItem'
-import { items } from './Items'
 import { updateTitles } from '../Actions/Titles/updateTitles'
 import { addData } from '../Actions/PreLoader/addData'
-import { inputLog } from '../Actions/PreLoader/inputLog'
 import { updateLastId } from '../Actions/LastId/updateLastId'
-import stateData from '../../../Data/userApi.json'
 import { createStore} from 'redux'
 import { clearPreLoader } from '../Actions/PreLoader/clearPreLoader'
 
@@ -227,37 +218,4 @@ describe("----", () => {
             }
         )
     })
-    
-
-
-
-    // it("Увеличился размер cells - 4",()=>
-    //     expect(store.getState().items[0].cells.length).toBe(4))
-
-    // it("Присвоение нового значения - test",()=>
-    //     expect(store.getState().items[0].cells).toEqual(
-    //         [
-    //             {
-    //                 value:150,
-    //                 key:'id',
-    //                 isEdit:false,
-    //             },
-    //             {
-    //                 value:'Vova',
-    //                 key:'name',
-    //                 isEdit:false,
-    //             },
-    //             {
-    //                 value:'www@www.ww',
-    //                 key:'email',
-    //                 isEdit:false,
-    //             },
-    //             {
-    //                 value:'test',
-    //                 key:'top',
-    //                 isEdit:true,
-    //             }
-    //         ]
-    //     ))
-    
 })

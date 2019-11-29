@@ -1,4 +1,5 @@
 import { TypeActions } from '../TypeActions'
+import { getLastId } from '../../Library'
 
 export const lastId = (state = 0, action)=>{
     switch(action.type){
@@ -9,8 +10,3 @@ export const lastId = (state = 0, action)=>{
     }
 }
 
-function getLastId(items){
-    // let arr = items.copyWithin(0)
-    // return (arr.length)?arr.pop().id:0
-    return (items.length)?items[items.length-1].id:0
-}

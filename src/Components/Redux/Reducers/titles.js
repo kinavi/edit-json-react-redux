@@ -1,4 +1,5 @@
 import {TypeActions} from '../TypeActions'
+import { updateTitles } from '../../Library'
 
 export const titles = (state = {}, action)=>{
     switch(action.type)
@@ -10,13 +11,3 @@ export const titles = (state = {}, action)=>{
     }
 }
 
-function updateTitles(currentTitles, items){
-    let titles = []
-    items.map(item=>
-        item.cells.map(cell=>{
-            if(!titles.includes(cell.key))
-                titles.push(cell.key) 
-            })
-    )
-    return titles
-}

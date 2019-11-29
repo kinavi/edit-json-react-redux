@@ -1,4 +1,3 @@
-//import { preItem } from './preItem'
 import { preLoader } from './preLoader'
 import { addData } from '../Actions/PreLoader/addData'
 
@@ -27,7 +26,4 @@ describe("PreLoader Reducer", () => {
                 }
             ])
     })
-    
-
-
 })

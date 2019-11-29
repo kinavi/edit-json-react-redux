@@ -1,16 +1,20 @@
 import React from 'react'
-import './style.css'
-//import { connect } from 'react-redux'
 import HeadTable from './HeadTable'
 import BodyTable from './BodyTable'
 
-const Table =()=>
+const Table = () =>
         <div>
             <div>Users:</div>
-            <div className='table'>
-                <HeadTable />
-                <BodyTable />
-            </div>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <HeadTable />
+                    </tr>
+                </thead> 
+                <tbody>
+                    <BodyTable />
+                </tbody>
+            </table>
         </div>
 
 export default Table  

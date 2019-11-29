@@ -7,7 +7,6 @@ export const Cell = (state = {}, action)=>{
                 value:action.value,
                 key:action.key,
                 isEdit:action.isEdit
-                //position:action.position
             }
         case TypeActions.EDIT_CELL:
             return (state.key!==action.key)?

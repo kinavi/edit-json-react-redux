@@ -1,15 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {IsJsonFormat} from '../../Library' 
-import { inputLog } from '../../Redux_v3/Actions/PreLoader/inputLog'
-import { addData } from '../../Redux_v3/Actions/PreLoader/addData'
-import { updateLastId } from '../../Redux_v3/Actions/LastId/updateLastId'
-import { clearPreLoader } from '../../Redux_v3/Actions/PreLoader/clearPreLoader'
+import { IsJsonFormat } from '../../Library' 
+import { inputLog } from '../../Redux/Actions/PreLoader/inputLog'
+import { addData } from '../../Redux/Actions/PreLoader/addData'
+import { updateLastId } from '../../Redux/Actions/LastId/updateLastId'
+import { clearPreLoader } from '../../Redux/Actions/PreLoader/clearPreLoader'
 import PreItem from './PreItem'
-import './style.css'
-import { addItem } from '../../Redux_v3/Actions/Items/addItem'
-import { sortCellByMask } from '../../Redux_v3/Actions/Cell/sortCellByMask'
-import {updateTitles} from '../../Redux_v3/Actions/Titles/updateTitles'
+import { addItem } from '../../Redux/Actions/Items/addItem'
+import { sortCellByMask } from '../../Redux/Actions/Cell/sortCellByMask'
+import {updateTitles} from '../../Redux/Actions/Titles/updateTitles'
 
 const Input = (props)=>
 {
@@ -53,26 +52,21 @@ const mapDispatchToProps = dispatch =>
 ({
     onReadData(id,value){
         dispatch(clearPreLoader())
+        //dispatch(updateLastId())
         if(IsJsonFormat(value))
         {
             const parsJSON = JSON.parse(value)
             const newID = +id+1;
-            console.log(`const new_id: ${newID} - type: ${typeof(newID)}`)
-            //dispatch(updateLastId())
-            //dispatch(clearPreLoader())
             if(Array.isArray(parsJSON))
             {
-                parsJSON.map((it, i, ar)=>{
-                    console.log(`map new_id: ${newID+i} - type: ${typeof(newID+i)}`)
+                parsJSON.forEach((it, i, ar)=>{
                     dispatch(addData(newID+i,it))
-                }
+                    }
                 )
-                //dispatch(updateLastId())
             }   
             else
             {
-                dispatch(addData(id,parsJSON))
-                //dispatch(updateLastId())
+                dispatch(addData(newID,parsJSON))
             }
 
             
@@ -89,7 +83,6 @@ const mapDispatchToProps = dispatch =>
 
     onAddItem(Items, clear){
         dispatch(addItem())
-        
         dispatch(clearPreLoader())
         clear()
         dispatch(inputLog(`Введите JSON`))

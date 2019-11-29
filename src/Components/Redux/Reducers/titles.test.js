@@ -1,6 +1,3 @@
-import { titles } from './titles'
-//import { updateTitles } from '../Actions/Titles/updateTitles'
-
 function updateTitles(currentTitle, items){
     let titles = [...currentTitle]
     items.map(item=>

@@ -1,48 +1,13 @@
 import React from 'react';
 import Table from './React/Table/index'
-//import InputField from './React/old/InputField' --- {PropTypes, Component}
-//import OutputField from './React/old/outputField'
 import Input from './React/Input'
-
-// class App extends Component{
-    
-//     getChildContext() {
-//         return {
-//             store: this.props.store
-//         }
-//     }
-
-//     componentWillMount() {
-//         this.unsubscribe = store.subscribe(
-//             () => this.forceUpdate()
-//         )
-//     }
-
-//     componentWillUnmount() {
-//         this.unsubscribe()
-//     }
-
-//     render(){
-
-//         return(
-//             <div className="app">
-//                 {/* <InputField/> */}
-//                 <CardList/>
-//                 {/* <OutputField/> */}
-//             </div>
-//         )
-//     }
-
-// }
-// App.childContextTypes = {
-//     store: PropTypes.object.isRequired
-// }
+import Output from './React/Output'
 
 const App = () =>
     <div className="app">
         <Input/>
         <Table/>
-        {/* <OutputField/> */}
+        <Output/>
     </div>
     
 export default App

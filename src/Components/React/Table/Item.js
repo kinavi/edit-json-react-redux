@@ -1,37 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux'
-import { switchEditeMode } from '../../Redux_v3/Actions/Cell/switchEditeMode'
+import Cell from './Cell'
 
-const Item = ({id, cells, key, switchEditeMode})=>{
-    //console.log(cells)
+const Item = ({id, cells})=>{
     return(
         cells.map((cell,i)=>
-            (cell.isEdit)?
-            <div key={i} onDo={()=>switchEditeMode(key, cell.key, false)}>
-                <input type='input'/>
-            </div>
-            :
-            <div key={i} className='elem' onDoubleClick={()=>switchEditeMode(id, cell.key, true)}>
-                {cell.value}
-            </div>
+            <Cell key={i} keyObj={cell.key} {...cell} id={id}/>
         )
     )
 }
-    
 
-const mapStateToProps = state =>
-({
-    //cells: state.items.cells
-})   
-
-const mapDispatchToProps = dispatch =>
-({
-    switchEditeMode(id, key, isEdit){
-        dispatch(switchEditeMode(id, key, isEdit))
-    }
-})
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Item)
+export default Item

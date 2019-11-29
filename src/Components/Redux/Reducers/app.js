@@ -1,10 +1,10 @@
 import { TypeActions } from '../TypeActions'
 import { items } from './Items'
-//import { stat } from 'fs'
 import { titles } from './titles'
 import { preLoader } from './preLoader'
 import { InputLog } from './InputLog'
 import { lastId } from './lastId'
+import { CreateReport } from '../../../Components/Library'
 
 export const app = (state = {}, action)=>{
     switch(action.type)
@@ -29,14 +29,12 @@ export const app = (state = {}, action)=>{
                 ...state,
                 items:items(state.items, action)
             }
-            //items(state, action)
         
 
         case TypeActions.ADD_ITEM:
             return {
                 ...state,
-                //lastId:state.preLoader,
-                items:[...state.items, ...state.preLoader]//items(state.items, action)
+                items:[...state.items, ...state.preLoader]
             }
         case TypeActions.REMOVE_ITEM:
             return {
@@ -73,7 +71,7 @@ export const app = (state = {}, action)=>{
         case TypeActions.UPDATE_LAST_ID:
             return{
                 ...state,
-                lastId:lastId(state.items, action)//(state.items.length)?state.items.pop().id:0//lastId(state.items, action)
+                lastId:lastId(state.items, action)
             }
 
 
@@ -83,8 +81,18 @@ export const app = (state = {}, action)=>{
                 preLoader:[]
             }
 
+
+
+        case TypeActions.OUTPUT_DATA:
+            return{
+                ...state,
+                Output:CreateReport(state.items)
+            }
+
         default:
             return state
 
     }   
 }
+
+

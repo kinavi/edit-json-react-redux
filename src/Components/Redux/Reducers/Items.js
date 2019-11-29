@@ -14,10 +14,6 @@ export const items = (state = [], action)=>{
                             false
                     )
 
-        // case TypeActions.ADD_TITLE:
-        //     return 
-
-
         case TypeActions.ADD_CELL:
             return state.map(
                 item => Item(item, action))
@@ -31,14 +27,12 @@ export const items = (state = [], action)=>{
             return state.map(
                 item => Item(item, action))
 
-        case TypeActions.SORT_BY_MASK:// test
+        case TypeActions.SORT_BY_MASK:
             return state.items.map(item =>({
                 ...item,
                 cells:sortCellsByMask(item.cells, state.titles)
             }))
-            
-            // state.map(
-            //     item => Item(item, action))
+
         default:
             return state
     }
@@ -65,24 +59,3 @@ function getCell(key,cells){
         isEdit:false
     }
 }
-
-// function sortByMask(objs,mask){
-//     let _Object = []
-//     for(let key in mask)
-//     {
-//         _Object.push(getObj(mask[key],objs))
-//     }
-//     return _Object
-// }
-
-// function getObj(key,objs){
-//     for(let ob in objs)
-//     {
-//         if(objs[ob].key==key)
-//             return objs[ob]
-//     }
-//     return {
-//         value:'',
-//         key:key
-//     }
-// }
