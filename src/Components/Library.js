@@ -16,20 +16,16 @@ export function CreateReport(items){
     items.length? 
         items.forEach(item=>{
             let resulObj = {}
-            console.dir(item)
             item.cells.forEach(cell=>{
-                console.dir(cell)
                 resulObj[cell.key]=cell.value
             })
             delete resulObj['id']
             delete resulObj['isEdit']
             resulArr.push(resulObj)
-            console.dir(resulObj)
         })
     : 
         items.forEach(item=>{
             resulArr[item.key]=item.value
-            console.dir(resulArr)
         })
 
     return JSON.stringify(resulArr)
