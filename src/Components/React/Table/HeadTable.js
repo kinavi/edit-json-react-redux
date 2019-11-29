@@ -1,20 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux'
 
-const HeadTable = ({Titles}) =>
-    <div className='head-table'>
-    {Titles.map(value=>
-            <div className='key'>{value}</div>
-        )}
-    </div>
-    
+const HeadTable = ({Titles}) =>{
+    return(
+        Titles.map((value,i)=>
+            <th key={i} className='key'>{value}</th>
+        )
+    )
+}
+
 const mapStateToProps = state =>
 ({
-    Titles: [...state.Titles]
+    Titles: state.titles
 })   
 
 export default connect(
-    mapStateToProps
+    mapStateToProps,
+    null
 )(HeadTable)
-
-//export default HeadTable
