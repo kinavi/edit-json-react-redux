@@ -10,6 +10,7 @@ import { items } from './Items'
 import { updateTitles } from '../Actions/Titles/updateTitles'
 import { addData } from '../Actions/PreLoader/addData'
 import { inputLog } from '../Actions/PreLoader/inputLog'
+import { updateLastId } from '../Actions/LastId/updateLastId'
 
 const state = {
     items:[
@@ -53,54 +54,54 @@ const action_ADD_ITEM = addItem(10, [{
 
 describe("app Reducer", () => {
 
-    it('ADD_ITEM', ()=>{
-        const result = app(state, action_ADD_ITEM)
-        expect(result)
-            .toEqual(
-                {
-                    items:[
-                        {
-                            id:5,
-                            cells:[
-                                {
-                                    value:150,
-                                    key:'id',
-                                    isEdit:false,
-                                },
-                                {
-                                    value:'Vova',
-                                    key:'name',
-                                    isEdit:false,
-                                },
-                                {
-                                    value:'www@www.ww',
-                                    key:'email',
-                                    isEdit:false,
-                                }
-                            ]
-                        },
-                        {
-                            id:10,
-                            cells:[
-                                {
-                                    key:'tit',
-                                    value:'What?',
-                                    isEdit:false
-                                },
-                                {
-                                    key:'tot',
-                                    value:'Where?',
-                                    isEdit:false
-                                }
-                            ]
-                        }
-                    ],
-                    titles:[
-                        'email', 'id','time','name'
-                    ]
-                }
-            )
-    })
+    // it('ADD_ITEM', ()=>{
+    //     const result = app(state, action_ADD_ITEM)
+    //     expect(result)
+    //         .toEqual(
+    //             {
+    //                 items:[
+    //                     {
+    //                         id:5,
+    //                         cells:[
+    //                             {
+    //                                 value:150,
+    //                                 key:'id',
+    //                                 isEdit:false,
+    //                             },
+    //                             {
+    //                                 value:'Vova',
+    //                                 key:'name',
+    //                                 isEdit:false,
+    //                             },
+    //                             {
+    //                                 value:'www@www.ww',
+    //                                 key:'email',
+    //                                 isEdit:false,
+    //                             }
+    //                         ]
+    //                     },
+    //                     {
+    //                         id:10,
+    //                         cells:[
+    //                             {
+    //                                 key:'tit',
+    //                                 value:'What?',
+    //                                 isEdit:false
+    //                             },
+    //                             {
+    //                                 key:'tot',
+    //                                 value:'Where?',
+    //                                 isEdit:false
+    //                             }
+    //                         ]
+    //                     }
+    //                 ],
+    //                 titles:[
+    //                     'email', 'id','time','name'
+    //                 ]
+    //             }
+    //         )
+    // })
 
     it('REMOVE_ITEM', ()=>{
         const state = {
@@ -821,7 +822,7 @@ describe("app Reducer", () => {
         
         const result = app(state, action)
         expect(result.titles)
-            .toEqual(['id1', 'id', 'name','email', 'top', 'tip', 'tuk'])
+            .toEqual(['id', 'name','email', 'top', 'tip', 'tuk'])
     })
 
 
@@ -917,6 +918,87 @@ describe("app Reducer", () => {
                         ]
                 }
             ]
+            })
+    })
+
+
+    it('last_id',()=>{
+        const state = {
+            items:[
+                {
+                    id:5,
+                    cells:[
+                        {
+                            value:150,
+                            key:'id',
+                            isEdit:false,
+                        },
+                        {
+                            value:'Vova',
+                            key:'name',
+                            isEdit:false,
+                        },
+                        {
+                            value:'www@www.ww',
+                            key:'email',
+                            isEdit:false,
+                        }
+                    ]
+                },
+                {
+                    id:1,
+                    cells:[
+                        {
+                            value:15,
+                            key:'id',
+                            isEdit:false,
+                        },
+                        {
+                            value:'Vasa',
+                            key:'name',
+                            isEdit:false,
+                        },
+                        {
+                            value:'w2ww@www.ww',
+                            key:'email',
+                            isEdit:false,
+                        }
+                    ]
+                },
+                {
+                    id:55,
+                    cells:[
+                        {
+                            value:150,
+                            key:'top',
+                            isEdit:false,
+                        },
+                        {
+                            value:'Vova',
+                            key:'tip',
+                            isEdit:false,
+                        },
+                        {
+                            value:'www@www.ww',
+                            key:'tuk',
+                            isEdit:false,
+                        }
+                    ]
+                }
+            ],
+            titles:[
+                'id1', 'id'
+            ],
+            preLoader:[],
+            lastId:2,
+            InputLog:undefined
+        }
+        const action = updateLastId()
+        const result = app(state, action)
+        expect(result)
+            .toEqual({
+                ...state,
+                lastId:55
             })
     })
 })

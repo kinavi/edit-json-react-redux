@@ -5,13 +5,13 @@ import { switchEditeMode } from '../../Redux_v3/Actions/Cell/switchEditeMode'
 const Item = ({id, cells, key, switchEditeMode})=>{
     //console.log(cells)
     return(
-        cells.map(cell=>
+        cells.map((cell,i)=>
             (cell.isEdit)?
-            <div onDo={()=>switchEditeMode(key, cell.key, false)}>
+            <div key={i} onDo={()=>switchEditeMode(key, cell.key, false)}>
                 <input type='input'/>
             </div>
             :
-            <div key={cell.key} className='elem' onDoubleClick={()=>switchEditeMode(id, cell.key, true)}>
+            <div key={i} className='elem' onDoubleClick={()=>switchEditeMode(id, cell.key, true)}>
                 {cell.value}
             </div>
         )
@@ -27,7 +27,6 @@ const mapStateToProps = state =>
 const mapDispatchToProps = dispatch =>
 ({
     switchEditeMode(id, key, isEdit){
-        console.log(`${id} - ${key} - ${isEdit}`)
         dispatch(switchEditeMode(id, key, isEdit))
     }
 })

@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 
 const HeadTable = ({Titles}) =>
     <div className='head-table'>
-    {Titles.map(value=>
-            <div className='key'>{value}</div>
+    {Titles.map((value,i)=>
+            <div key={i} className='key'>{value}</div>
         )}
     </div>
     

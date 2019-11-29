@@ -10,9 +10,6 @@ const Table =()=>
             <div className='table'>
                 <HeadTable />
                 <BodyTable />
-                {/* <div>
-                    <newTable/>
-                </div> */}
             </div>
         </div>
 

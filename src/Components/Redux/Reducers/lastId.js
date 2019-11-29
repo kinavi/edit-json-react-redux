@@ -10,5 +10,7 @@ export const lastId = (state = 0, action)=>{
 }
 
 function getLastId(items){
-    return items.pop().id
+    // let arr = items.copyWithin(0)
+    // return (arr.length)?arr.pop().id:0
+    return (items.length)?items[items.length-1].id:0
 }

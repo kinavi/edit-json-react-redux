@@ -88,3 +88,4 @@ User.getflagsref= (node)=>{this.flagsField=node}
 User.getDateActivateref= (node)=>{this.dateactivateField=node}
 
 export default User
+

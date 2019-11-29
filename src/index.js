@@ -114,7 +114,7 @@ const initialState = {
         // {
         //     cells:[
         //         {
-        //             value:150,
+        //             value:140,
         //             key:'id',
         //             isEdit:false,
         //         },
@@ -156,7 +156,7 @@ const initialState = {
         // 'id','time','name'
     ],
     preLoader:[],
-    lastId:2,
+    lastId:0,
     InputLog:""
     
     // Titles:['id','name','mail'],

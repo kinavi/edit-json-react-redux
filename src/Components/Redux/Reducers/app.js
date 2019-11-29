@@ -35,7 +35,8 @@ export const app = (state = {}, action)=>{
         case TypeActions.ADD_ITEM:
             return {
                 ...state,
-                items:items(state.items, action)
+                //lastId:state.preLoader,
+                items:[...state.items, ...state.preLoader]//items(state.items, action)
             }
         case TypeActions.REMOVE_ITEM:
             return {
@@ -72,7 +73,7 @@ export const app = (state = {}, action)=>{
         case TypeActions.UPDATE_LAST_ID:
             return{
                 ...state,
-                lastId:lastId(state.items, action)
+                lastId:lastId(state.items, action)//(state.items.length)?state.items.pop().id:0//lastId(state.items, action)
             }
 
 

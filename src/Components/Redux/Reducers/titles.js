@@ -11,7 +11,7 @@ export const titles = (state = {}, action)=>{
 }
 
 function updateTitles(currentTitles, items){
-    let titles = [...currentTitles]
+    let titles = []
     items.map(item=>
         item.cells.map(cell=>{
             if(!titles.includes(cell.key))

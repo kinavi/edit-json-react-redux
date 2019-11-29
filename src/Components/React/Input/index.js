@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import {IsJsonFormat} from '../../Library' 
 import { inputLog } from '../../Redux_v3/Actions/PreLoader/inputLog'
 import { addData } from '../../Redux_v3/Actions/PreLoader/addData'
-//import { updateLastId } from '../../Redux_v3/Actions/LastId/updateLastId'
+import { updateLastId } from '../../Redux_v3/Actions/LastId/updateLastId'
 import { clearPreLoader } from '../../Redux_v3/Actions/PreLoader/clearPreLoader'
 import PreItem from './PreItem'
 import './style.css'
@@ -11,7 +11,7 @@ import { addItem } from '../../Redux_v3/Actions/Items/addItem'
 import { sortCellByMask } from '../../Redux_v3/Actions/Cell/sortCellByMask'
 import {updateTitles} from '../../Redux_v3/Actions/Titles/updateTitles'
 
-const Input = (props,{store})=>
+const Input = (props)=>
 {
     let taValue;
 
@@ -34,11 +34,12 @@ const Input = (props,{store})=>
                 <button onClick={()=>onAddItem(Items,clearField)} >Add main table</button>
             </div>
             }
+            <div>Last id: {LastId}</div>
         </div>
         
     )
 }
-//test - [{"name":"Vova","id":110},{"name":"Vova","id":110}]
+
 const mapStateToProps = state =>
 ({
 
@@ -55,21 +56,29 @@ const mapDispatchToProps = dispatch =>
         if(IsJsonFormat(value))
         {
             const parsJSON = JSON.parse(value)
-            dispatch(clearPreLoader())
+            const newID = +id+1;
+            console.log(`const new_id: ${newID} - type: ${typeof(newID)}`)
+            //dispatch(updateLastId())
+            //dispatch(clearPreLoader())
             if(Array.isArray(parsJSON))
             {
-                //console.dir(parsJSON)
-                parsJSON.map((it, i, ar)=>dispatch(addData(+id+1+i,it)))//addItem(it.id, )
+                parsJSON.map((it, i, ar)=>{
+                    console.log(`map new_id: ${newID+i} - type: ${typeof(newID+i)}`)
+                    dispatch(addData(newID+i,it))
+                }
+                )
+                //dispatch(updateLastId())
             }   
             else
             {
                 dispatch(addData(id,parsJSON))
+                //dispatch(updateLastId())
             }
 
-            //dispatch(updateLastId())
+            
             dispatch(inputLog(`JSON: ${value}`))
         }
-        else if(value=='')
+        else if(value==='')
         {
             
             dispatch(inputLog('Введите JSON'))
@@ -79,20 +88,16 @@ const mapDispatchToProps = dispatch =>
     },
 
     onAddItem(Items, clear){
-        Items.map(item=>{
-            dispatch(addItem(item.id,item.cells))
-        })
-        //dispatch(updateLastId())
+        dispatch(addItem())
+        
         dispatch(clearPreLoader())
         clear()
         dispatch(inputLog(`Введите JSON`))
         dispatch(updateTitles())
         dispatch(sortCellByMask())
+        dispatch(updateLastId())
     }
 })
-
-
-
 
 export default connect(
     mapStateToProps,
